@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Tiny Date Invitation</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@500;700;800&display=swap');
+    *{box-sizing:border-box} body{margin:0;min-width:320px;font-family:Nunito,system-ui,sans-serif;color:#543c60}
+    .app{min-height:100svh;overflow:hidden;display:grid;place-items:center;padding:36px 18px 28px;position:relative;background:radial-gradient(circle at 17% 10%,#fff9d6 0 8%,transparent 24%),radial-gradient(circle at 82% 86%,#ccecff 0 4%,transparent 23%),linear-gradient(135deg,#ffdded,#ded7ff 53%,#cfefff)}
+    .sky{position:absolute;inset:0;pointer-events:none;opacity:.7}.sparkle{position:absolute;top:-10%;color:#fff;text-shadow:0 2px 7px #ae7ac2;animation:drift 8s linear infinite}@keyframes drift{to{transform:translateY(120vh) rotate(220deg)}}
+    .card{width:min(100%,620px);z-index:1;text-align:center;padding:clamp(28px,6vw,52px);border:3px solid rgba(255,255,255,.9);border-radius:38px;background:rgba(255,255,255,.76);box-shadow:0 24px 70px rgba(100,58,131,.22),inset 0 0 0 2px rgba(255,188,218,.3);backdrop-filter:blur(12px);position:relative;animation:appear .55s ease-out both}@keyframes appear{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+    .eyebrow{color:#a96d9b;font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin:0 0 12px}h1{font-family:Fredoka,sans-serif;font-size:clamp(2rem,7vw,3.35rem);line-height:1.02;color:#704a7b;margin:11px auto 14px;max-width:520px}.intro{font-size:1.02rem;line-height:1.55;max-width:450px;margin:14px auto 24px}.date{display:inline-block;margin:2px 0 4px;padding:8px 14px;border-radius:100px;background:#fff2a9;color:#8f6a37;font-weight:800;box-shadow:0 3px 0 #e7cc76}
+    .mascot{width:116px;height:91px;margin:2px auto 4px;border-radius:48% 48% 42% 42%;background:linear-gradient(140deg,#ffb3d6,#ed86bd);position:relative;display:grid;place-items:center;box-shadow:inset 0 -7px #da6da9,0 8px 0 #f4bed8;animation:bob 2.5s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-7px) rotate(2deg)}}.face{color:#6b3c63;font-size:1.15rem;font-weight:900;z-index:1;margin-top:9px}.ear{width:28px;height:47px;position:absolute;top:-26px;background:#f49aca;border-radius:80% 22% 70% 20%;transform:rotate(-21deg)}.right{right:3px;transform:rotate(39deg) scaleX(-1)}.left{left:3px}.tiny{position:absolute;bottom:-18px;right:-11px;color:#e2558f;font-size:27px;animation:pulse 1s infinite alternate}@keyframes pulse{to{transform:scale(1.2)}}
+    .sticker{position:absolute;filter:drop-shadow(0 4px 2px rgba(104,68,130,.16));animation:wiggle 3s ease-in-out infinite}.star{font-size:45px;top:-21px;left:30px}.cloud{font-size:49px;top:-17px;right:30px}.heart{font-size:35px;right:-13px;bottom:70px}@keyframes wiggle{50%{transform:rotate(8deg) translateY(-4px)}}
+    .plans{display:grid;gap:9px;text-align:left;margin:20px auto;max-width:490px}.plan{display:flex;align-items:center;gap:12px;padding:11px 14px;background:#fff;border:2px solid #f0d8eb;border-radius:17px;color:#604c63;transition:.2s;cursor:pointer}.plan:hover,.plan.selected{border-color:#e984b3;background:#fff1f7;transform:translateY(-2px)}.icon{font-size:1.75rem}.plan strong,.plan small{display:block}.plan small{font-size:.78rem;opacity:.75;margin-top:2px}
+    .buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}button{font:inherit;cursor:pointer}.yes,.maybe,.back{border:0;border-radius:15px;padding:13px 20px;font-weight:900;transition:transform .2s,box-shadow .2s}.yes{color:white;background:linear-gradient(135deg,#f87faf,#bb76d3);box-shadow:0 5px 0 #a35dba,0 10px 17px #dca2c4}.maybe{color:#805f86;background:#f4e9f8}.back{display:block;margin:18px auto 0;padding:7px;color:#8f6b98;background:transparent;text-decoration:underline}.yes:hover,.maybe:hover{transform:translateY(-3px)}
+    .details{margin:24px 0;padding:8px 17px;text-align:left;background:#fff7fc;border-radius:19px}.details p{display:grid;grid-template-columns:27px 64px 1fr;align-items:baseline;gap:6px;margin:14px 0;font-size:.94rem}.details b{color:#a36591}.big{font-size:80px;animation:pop .7s cubic-bezier(.175,.885,.32,1.275)}@keyframes pop{from{transform:scale(0) rotate(-20deg)}to{transform:none}}.ticket{margin:25px auto 4px;padding:18px;max-width:330px;color:#6a4a73;border:2px dashed #e89ab9;border-radius:14px;background:#fff4fa;transform:rotate(-2deg)}.ticket span,.ticket strong,.ticket small{display:block}.ticket span{letter-spacing:.13em;font-size:.68rem;font-weight:900}.ticket strong{font:700 1.7rem Fredoka,sans-serif;margin:5px 0}.ticket small{font-size:.8rem}.note{position:absolute;bottom:7px;color:#74567d;font-size:.77rem;font-weight:800}
+    @media(max-width:460px){.app{padding:24px 12px}.card{border-radius:28px;padding:30px 20px}.heart{display:none}.buttons{display:grid}.yes,.maybe{width:100%}.plan{padding:10px}} @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important}}
+  </style>
+</head>
+<body>
+  <main class="app">
+    <div class="sky" id="sky"></div>
+    <section class="card" id="card"></section>
+    <p class="note">Made with a whole lot of ♥</p>
+  </main>
+  <script>
+    const plans=[['🍜','Cozy dinner','Your favorite place, then dessert'],['🌷','Little adventure','A walk, cute photos, and a surprise'],['🎬','Movie night','Snacks, blankets, and your pick']];
+    let choice=0;
+    const card=document.getElementById('card');
+    document.getElementById('sky').innerHTML=Array.from({length:24},(_,i)=>`<span class="sparkle" style="left:${(i*37)%100}%;animation-delay:${(i%8)*.28}s;font-size:${14+(i%3)*6}px">${['♥','✦','●','✿'][i%4]}</span>`).join('');
+    const mascot=`<div class="mascot" aria-label="cute pink creature"><span class="ear left"></span><span class="ear right"></span><span class="face">˶ᵔ ᵕ ᵔ˶</span><span class="tiny">♥</span></div>`;
+    function shell(content){card.innerHTML=`<div class="sticker star">⭐</div><div class="sticker cloud">☁️</div><div class="sticker heart">💗</div>${content}`}
+    function invite(){shell(`${mascot}<p class="eyebrow">A tiny invitation for my favorite person</p><h1>Will you go on a date with me?</h1><p class="date">Sunday · August 16</p><p class="intro">I saved a whole day for good food, silly smiles, and being with you.</p><div class="plans">${plans.map((p,i)=>`<button class="plan ${i===choice?'selected':''}" onclick="pick(${i})"><span class="icon">${p[0]}</span><span><strong>${p[1]}</strong><small>${p[2]}</small></span></button>`).join('')}</div><div class="buttons"><button class="yes" onclick="yes()">Yes, I’d love to! ♡</button><button class="maybe" onclick="details()">Tell me more</button></div>`)}
+    function pick(i){choice=i;invite()}
+    function details(){const p=plans[choice];shell(`${mascot}<p class="eyebrow">The official itinerary</p><h1>A day designed for us</h1><div class="details"><p><span>📅</span><b>When</b>Sunday, August 16</p><p><span>${p[0]}</span><b>Plan</b>${p[1]} — ${p[2]}</p><p><span>💌</span><b>Promise</b>Zero pressure, maximum cuteness</p></div><button class="yes" onclick="yes()">Okay, it’s a date! ♡</button><button class="back" onclick="invite()">← Pick another idea</button>`)}
+    function yes(){const p=plans[choice];shell(`<div class="big">💖</div><p class="eyebrow">YIPPEE!</p><h1>It’s a date!</h1><p class="intro">I can’t wait for our ${p[1].toLowerCase()} on <b>Sunday, August 16</b>. I’ll handle the details — you just bring that beautiful smile.</p><div class="ticket"><span>DATE VOUCHER</span><strong>You + Me</strong><small>Redeemable for one very cute Sunday</small></div><button class="back" onclick="invite()">Make another plan</button>`)}
+    invite();
+  </script>
+</body>
+</html>
